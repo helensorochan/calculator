@@ -1,0 +1,27 @@
+%link{ href: 'css/credit.css', rel: 'stylesheet', type: 'text/css'}
+
+.percent= "Percent: #{ @credit.percent.round(2) }"
+.total= "Total: #{ @credit.total.round(2) }"
+.type= "Method of payment: #{ @credit.type }"
+.term="Term (months): #{ @credit.term }"
+
+.content
+  - if @credit.calculations.length > 0
+    %table.table
+      %thead
+        %tr
+          %th= 'Month number'
+          %th= 'Credit payment'
+          %th= 'Credit percent'
+          %th= 'Monthly payment'
+          %th= 'Balance'
+      %tbody
+        - @credit.calculations.each do |calculation|
+          %tr
+            %td= calculation[:month]
+            %td= calculation[:credit_payment]
+            %td= calculation[:credit_percent]
+            %td= calculation[:monthly_payment]
+            %td= calculation[:credit_balance]
+  - else
+    %p= 'There is nothing to display'

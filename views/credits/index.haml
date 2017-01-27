@@ -1,0 +1,26 @@
+%script{ src: 'javascripts/jquery.js', type: 'text/javascript' }
+%script{ src: 'javascripts/credit.js', type: 'text/javascript' }
+%link{ href: 'css/credit.css', rel: 'stylesheet', type: 'text/css'}
+
+%h1= 'Calculator'
+%form{ action: '/credit', method: 'post', target: '_blank' }
+  .percent
+    %label{ for: 'percent' } Percent(%):
+    %input{ type: 'number', name: 'percent', min: 1, id: 'percent' }
+
+  .total
+    %label{ for: 'total' } Total:
+    %input{ type: 'number', name: 'total', min: 1, id: 'total'}
+
+  .type
+    %label{ for: 'type' } Method of repayment:
+    %select{ name: 'type' }
+      %option{ value: 'standart' } Standart repayment
+      %option{ value: 'annuity' } Annuity repayment
+
+  .term
+    %label{ for: 'term' } Term(months):
+    %input{ type: 'number', name: 'term', min: 1, id: 'term' }
+
+  .submit
+    %input{ type: 'submit', value: 'Calculate', id: 'calculate_credit' }
